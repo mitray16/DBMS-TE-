@@ -1,0 +1,51 @@
+import pymongo
+
+myclient=pymongo.MongoClient("mongodb://localhost:27017")
+
+mydb=myclient["student"] #student is datbase name
+
+print(mydb.list_collection_names()) # to print all collections in database
+
+print("success")
+
+clist=mydb.list_collection_names()
+
+if "sandesh" in clist:
+	print("collection exist in databases")
+	mycol=mydb["sandesh"]
+	x=mycol.find_one()
+	print(x)
+	
+def insert():
+	mycol = mydb["sandesh"]
+
+	mydict = { "name": "John", "address": "Highway 37" }
+
+	x = mycol.insert_one(mydict)
+
+	y=mycol.find_one()
+
+	print("DONE")
+
+def delete():
+	mycol = mydb["student"]
+
+	myquery = { "address": "Highway 37" }
+
+	mycol.delete_one(myquery)
+
+
+def display():
+	mydb = myclient["student"]
+	mycol = mydb["sandesh"]
+
+	x = mycol.find_one()
+
+	print(x) 
+
+
+
+
+insert()
+delete()
+display()

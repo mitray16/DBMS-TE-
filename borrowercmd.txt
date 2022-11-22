@@ -1,0 +1,53 @@
+create table borrower(roll_no int, name varchar(20),dateofissue date,nameofbook varchar(20),status varchar(10));
+
+create table fine(roll_no int, rdate date,amt int);
+
+insert into borrower values(1,'sandesh',to_date('20220811','YYYYMMDD'),'DBMS','I');
+
+
+insert into borrower values(2,'kajal',to_date('20221011','YYYYMMDD'),'DSA','I');
+
+
+insert into borrower values(3,'mikki',to_date('20221111','YYYYMMDD'),'SPOS','I');
+
+
+
+
+DECLARE
+     p_rollno number;
+     p_nameofbook varchar(20);
+     p_dateofissue date;
+     noofdays number(4);
+     currentdate date;
+     nodata EXCEPTION;
+     amount number(34);
+BEGIN 
+     p_rollno := &roll_no;
+     p_nameofbook := '&nameofbook';
+     currentdate := trunc(SYSDATE);
+IF p_rollno >0 THEN
+     select dateofissue into p_dateofissue from borrower where roll_no = p_rollno and nameofbook = p_nameofbook;
+     select currentdate-p_dateofissue into noofdays from dual;
+     dbms_output.put_line('no of days = '||noofdays);
+END IF;
+     
+IF noofdays>30 THEN  amount:=noofdays*50;
+ELSIF(noofdays >= 15 AND noofdays <=30) THEN amount:=noofdays*5;
+ELSE
+dbms_output.put_line('no fine');
+
+END IF;
+IF amount > 0 THEN
+      INSERT INTO fine values(p_rollno,sysdate,amount);
+END IF;
+      UPDATE borrower SET status = 'r' where roll_no = p_rollno;
+
+END;
+/
+
+
+
+
+select * from fine;
+
+

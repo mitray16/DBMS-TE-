@@ -1,0 +1,53 @@
+create table stud_marks(roll_no number(12),name varchar2(23),total_marks number(34));
+
+
+create table result(roll number(12),name varchar2(23),class varchar2(34));
+
+
+insert into stud_marks values(1,'sandesh',1200);
+
+insert into stud_marks values(2,'kajal',950);
+
+insert into stud_marks values(3,'mikki',850);
+
+insert into stud_marks values(4,'ethics',800);
+
++++++++++++++++++++++++   MAIN PROCEDURE PROCGRADE ++++++++++++++++++++++++
+
+create or replace procedure pro_grade(  
+    var_rollno in number,
+    p_rollno out stud_marks.roll_no%type,
+    p_name out stud_marks.name%type,
+    p_totalmarks out stud_marks.total_marks%type)
+AS
+BEGIN
+select roll_no,name,total_marks into p_rollno,p_name,p_totalmarks from stud_marks where roll_no = var_rollno;
+IF p_totalmarks <= 1500 and p_totalmarks >= 990 THEN
+insert into result values(p_rollno,p_name,'DISTINCTION');
+ELSE IF p_totalmarks <= 989 and p_totalmarks >= 900 THEN
+insert into result values(p_rollno,p_name,'FIRST CLASS');
+ELSE IF p_totalmarks <=899 and p_totalmarks >= 825 THEN
+insert into result values(p_rollno,p_name,'SECOND CLASS');
+ELSE
+insert into result values(p_rollno,p_name,'FAIL');
+END IF;
+END IF;
+END IF;
+EXCEPTION
+WHEN no_data_found then
+dbms_output.put_line('roll no'|| var_rollno||'not found');
+END;
+/
+
++++++++++++++++++++++++++++++  CALLING PROCEDURE ++++++++++++++++++++++++++
+DECLARE
+    var_rollno  number(20);
+    p_rollno  stud_marks.roll_no%type;
+    p_name  stud_marks.name%type;
+    p_totalmarks  stud_marks.total_marks%type;
+BEGIN
+    var_rollno := & roll_no;
+    pro_grade(var_rollno,p_rollno,p_name,p_totalmarks);
+END;
+/
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

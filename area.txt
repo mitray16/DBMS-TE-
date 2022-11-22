@@ -1,0 +1,29 @@
+SQL> create table areas(radius number(12),area number(23,2));
+
+
+declare
+radius number(12) ;
+area number(23,2);
+pi constant number(4,2) := 3.14;
+begin
+radius := 5;
+while radius < 10  --< no semi colon for while and any loop
+loop
+area := pi*power(radius,2);
+insert into areas values(radius,area);
+radius := radius +1;
+end loop;
+end;
+ /
+
+
+output = 
+SQL> select *From areas;
+
+    RADIUS       AREA
+---------- ----------
+         5       78.5
+         6     113.04
+         7     153.86
+         8     200.96
+         9     254.34

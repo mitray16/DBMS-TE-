@@ -1,0 +1,238 @@
+
+1. find the names of all branches in loan relation.
+
+
+mysql> select Branch_Name from loan;
++-------------+
+| Branch_Name |
++-------------+
+| Akurdi      |
+| Akurdi      |
+| Andheri     |
+| Andheri     |
+| Central     |
+| Dadar       |
+| Dadar       |
+| Dadar       |
+| Juhu        |
+| MIDC        |
++-------------+
+10 rows in set (0.01 sec)
+
+
+2. find all loan numbers for loan made at Akurdi branch with loan amount>1200
+
+mysql> select Loan_Number from loan where Branch_Name="Akurdi" and amount>12000;
++-------------+
+| Loan_Number |
++-------------+
+|      202011 |
+|      202018 |
++-------------+
+2 rows in set (0.00 sec)
+
+
+
+3. find all customers who have aloan from bank. find their names,loan no. and loan amount.
+
+
+ SELECT borrower.Customer_Name,loan.Amount,loan.Loan_number  FROM loan , borrower WHERE loan.Loan_Number=borrower.Loan_Number;
++---------------+--------+-------------+
+| Customer_Name | Amount | Loan_number |
++---------------+--------+-------------+
+| Abhishek      |  12455 |      202011 |
+| Aditya        |  72828 |      202012 |
+| Aniket        |   1300 |      202013 |
+| Mukesh        |   1400 |      202014 |
+| Harshal       |   1350 |      202015 |
+| Sandesh       |  12350 |      202016 |
+| Satyam        |  14350 |      202017 |
+| Satyam        |  50000 |      202018 |
+| Sandesh       | 100000 |      202019 |
+| Mukesh        |   9000 |      202021 |
++---------------+--------+-------------+
+10 rows in set (0.01 sec)
+
+
+
+4. list all customers in alphabetical order who have loan from akurdi branch
+
+
+mysql> select borrower.Customer_Name from borrower,loan where Branch_Name="Akurdi" and loan.Loan_Number=borrower.Loan_number order by Customer_Name asc;
++---------------+
+| Customer_Name |
++---------------+
+| Abhishek      |
+| Satyam        |
++---------------+
+2 rows in set (0.00 sec)
+
+
+
+5. find all customers who have an account or loan or both at bank.
+
+
+mysql> select depositor.Customer_Name from depositor union select borrower.Customer_Name from borrower;
++---------------+
+| Customer_Name |
++---------------+
+| Abhishek      |
+| Aditya        |
+| Aniket        |
+| Harshal       |
+| Mukesh        |
+| Sandesh       |
+| Satyam        |
+| Tejas         |
+| Tushar        |
+| Zoya          |
++---------------+
+10 rows in set (0.00 sec)
+
+
+
+
+6.  Find all customers who have both account and loan at bank.
+
+ select distinct depositor.Customer_Name from depositor,borrower where depositor.Customer_Name=borrower.Customer_Name;
++---------------+
+| Customer_Name |
++---------------+
+| Abhishek      |
+| Aditya        |
+| Aniket        |
+| Harshal       |
+| Mukesh        |
+| Sandesh       |
+| Satyam        |
++---------------+
+7 rows in set (0.00 sec)
+
+
+
+7. Find all customers who have account but no loan at the bank.
+
+
+mysql> select distinct depositor.Customer_Name from depositor,borrower where depositor.Customer_Name not in (select Customer_Name from borrower );
++---------------+
+| Customer_Name |
++---------------+
+| Zoya          |
+| Tushar        |
+| Tejas         |
++---------------+
+3 rows in set (0.00 sec)
+
+
+
+
+8.  Find the average account balance at each branch
+
+
+mysql> select avg(balance),Branch_Name from account group by Branch_Name;
++--------------+-------------+
+| avg(balance) | Branch_Name |
++--------------+-------------+
+|    7500.0000 | Akurdi      |
+|    1000.0000 | Andheri     |
+|    2000.0000 | Borivali    |
+|    7535.0000 | Central     |
+|    4000.0000 | Dadar       |
+|    6666.6667 | Nigdi       |
++--------------+-------------+
+6 rows in set (0.00 sec)
+
+
+9. Find no. of depositors at each branch.
+
+
+mysql> select Branch_Name,count(*) as 'No' from account group by Branch_Name;
++-------------+----+
+| Branch_Name | No |
++-------------+----+
+| Akurdi      |  2 |
+| Andheri     |  1 |
+| Borivali    |  1 |
+| Central     |  2 |
+| Dadar       |  1 |
+| Nigdi       |  3 |
++-------------+----+
+6 rows in set (0.00 sec)
+
+
+
+10. Find name of Customer and city where customer name starts with Letter P. 
+
+
+mysql> select Customer_Name ,Customer_City from customer where Customer_Name like "p%";
+Empty set (0.00 sec)
+
+
+
+
+11. Display distinct cities of branch.
+
+
+mysql> select distinct Branch_City from branch;
++-------------+
+| Branch_City |
++-------------+
+| Pune        |
+| Mumbai      |
++-------------+
+2 rows in set (0.07 sec)
+
+
+
+
+
+12. Find the branches where average account balance > 12000
+
+mysql> select avg(balance),Branch_Name from account group by Branch_Name having avg(balance)>12000;
+Empty set (0.01 sec)
+
+
+13. Find number of tuples in customer relation.
+
+
+mysql> SELECT COUNT(*)
+    -> FROM customer;
++----------+
+| COUNT(*) |
++----------+
+|       10 |
++----------+
+1 row in set (0.01 sec)
+
+
+
+
+14. Calculate total loan amount given by bank. 
+
+
+mysql> select sum(Amount) from loan;
++-------------+
+| sum(Amount) |
++-------------+
+|      275033 |
++-------------+
+1 row in set (0.00 sec)
+
+
+
+
+
+15. Delete all loans with loan amount between 1300 and 1500.
+
+
+
+
+
+
+
+
+
+
+
+
+

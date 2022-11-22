@@ -1,0 +1,2931 @@
+(base) admin1@502-20:~$ su
+Password: 
+root@502-20:/home/admin1# sudo -i
+root@502-20:~# mongo
+MongoDB shell version v3.6.3
+connecting to: mongodb://127.0.0.1:27017
+MongoDB server version: 3.6.3
+Server has startup warnings: 
+2022-11-19T08:54:07.655+0530 I STORAGE  [initandlisten] 
+2022-11-19T08:54:07.655+0530 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2022-11-19T08:54:07.655+0530 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2022-11-19T08:54:12.659+0530 I CONTROL  [initandlisten] 
+2022-11-19T08:54:12.660+0530 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2022-11-19T08:54:12.660+0530 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2022-11-19T08:54:12.660+0530 I CONTROL  [initandlisten] 
+
+> use Empdb
+switched to db Empdb
+> show dbs
+Dipti    0.000GB
+Empdb    0.000GB
+TE_77    0.000GB
+TE_A_71  0.000GB
+admin    0.000GB
+aniket   0.000GB
+config   0.000GB
+local    0.000GB
+> use Empdb
+switched to db Empdb
+
+shellHelper.show@src/mongo/shell/utils.js:953:11
+shellHelper@src/mongo/shell/utils.js:706:15
+@(shellhelp2):1:1
+> show collections
+Employee
+employee
+
+> db.employee.insertMany([{EmpId:01,Name:[{Fname:'dipti',Lname:'Kodre'}],company:'infosys',salary:100000,designation:'programmer',age:20,expertise:['python','c++','java','mongodb'],DOB:'06/08/2002',EmailId:'diptikodre8971@gmail.com',contact:2345789012,address:[{Paddress:{city:'pune',district:'pune',state:'Maharashtra',pincode:411001},Laddress:{city:'pune',district:'pune',state:'Maharashtra',pincode:411001}}]}])
+{
+	"acknowledged" : true,
+	"insertedIds" : [
+		ObjectId("63785aeada5ca54f7bafeab7")
+	]
+}
+
+
+}
+> db.employee.insertMany([{EmpId:02,Name:[{Fname:'mayuri',Lname:'Kawade'}],company:'TCS',salary:50000,designation:'tester',age:20,expertise:['python','c++','java','oracle'],DOB:'04/02/2002',EmailId:'mayuri11@gmail.com',contact:8971789012,address:[{Paddress:{city:'pune',district:'pune',state:'Maharashtra',pincode:411001},Laddress:{city:'pune',district:'pune',state:'Maharashtra',pincode:411001}}]}])
+{
+	"acknowledged" : true,
+	"insertedIds" : [
+		ObjectId("63785b4dda5ca54f7bafeab8")
+	]
+}
+
+> db.employee.find({}).pretty
+function () {
+    this._prettyShell = true;
+    return this;
+}
+> db.employee.insertMany([{EmpId:03,Name:[{Fname:'anisha',Lname:'Bothe'}],company:'Infosys',salary:25000,designation:'tester',age:20,expertise:['Mongodb','mysql','Csasandra'],DOB:'07/09/2002',EmailId:'anisha1211@gmail.com',contact:9011789012,address:[{Paddress:{city:'nagar',district:'nagar',state:'Maharashtra',pincode:411221},Laddress:{city:'pune',district:'pune',state:'Maharashtra',pincode:411001}}]}])
+{
+	"acknowledged" : true,
+	"insertedIds" : [
+		ObjectId("63785bceda5ca54f7bafeab9")
+	]
+}
+> db.employee.find({}).pretty
+function () {
+    this._prettyShell = true;
+    return this;
+}
+
+> db.employee.insertMany([{EmpId:04,Name:[{Fname:'sakshi',Lname:'Misal'}],company:'Infosys',salary:25000,designation:'tester',age:20,expertise:['Mongodb','mysql','Csasandra'],DOB:'10/12/2002',EmailId:'sakshi11@gmail.com',contact:9822789012,address:[{Paddress:{city:'nashik',district:'nashik',state:'Maharashtra',pincode:4234110},Laddress:{city:'pune',district:'pune',state:'Maharashtra',pincode:411001}}]}])
+{
+	"acknowledged" : true,
+	"insertedIds" : [
+		ObjectId("63785c4cda5ca54f7bafeaba")
+	]
+}
+> db.employee.find({}).pretty()
+{
+	"_id" : ObjectId("63785aeada5ca54f7bafeab7"),
+	"EmpId" : 1,
+	"Name" : [
+		{
+			"Fname" : "dipti",
+			"Lname" : "Kodre"
+		}
+	],
+	"company" : "infosys",
+	"salary" : 100000,
+	"designation" : "programmer",
+	"age" : 20,
+	"expertise" : [
+		"python",
+		"c++",
+		"java",
+		"mongodb"
+	],
+	"DOB" : "06/08/2002",
+	"EmailId" : "diptikodre8971@gmail.com",
+	"contact" : 2345789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785b4dda5ca54f7bafeab8"),
+	"EmpId" : 2,
+	"Name" : [
+		{
+			"Fname" : "mayuri",
+			"Lname" : "Kawade"
+		}
+	],
+	"company" : "TCS",
+	"salary" : 50000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"python",
+		"c++",
+		"java",
+		"oracle"
+	],
+	"DOB" : "04/02/2002",
+	"EmailId" : "mayuri11@gmail.com",
+	"contact" : 8971789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785bceda5ca54f7bafeab9"),
+	"EmpId" : 3,
+	"Name" : [
+		{
+			"Fname" : "anisha",
+			"Lname" : "Bothe"
+		}
+	],
+	"company" : "Infosys",
+	"salary" : 25000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"Mongodb",
+		"mysql",
+		"Csasandra"
+	],
+	"DOB" : "07/09/2002",
+	"EmailId" : "anisha1211@gmail.com",
+	"contact" : 9011789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "nagar",
+				"district" : "nagar",
+				"state" : "Maharashtra",
+				"pincode" : 411221
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785c4cda5ca54f7bafeaba"),
+	"EmpId" : 4,
+	"Name" : [
+		{
+			"Fname" : "sakshi",
+			"Lname" : "Misal"
+		}
+	],
+	"company" : "Infosys",
+	"salary" : 25000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"Mongodb",
+		"mysql",
+		"Csasandra"
+	],
+	"DOB" : "10/12/2002",
+	"EmailId" : "sakshi11@gmail.com",
+	"contact" : 9822789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "nashik",
+				"district" : "nashik",
+				"state" : "Maharashtra",
+				"pincode" : 4234110
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+> db.employee.insertMany([{EmpId:05,Name:[{Fname:'shraddha',Lname:'Pashilkar'}],company:'Infosys',salary:150000,designation:'developer',age:20,expertise:['Mongodb','mysql','Csasandra'],DOB:'25/08/2002',EmailId:'shradha12@gmail.com',contact:8978789012,address:[{Paddress:{city:'kokan',district:'raygad',state:'Maharashtra',pincode:4234112},Laddress:{city:'pune',district:'pune',state:'Maharashtra',pincode:411048}}]}])
+{
+	"acknowledged" : true,
+	"insertedIds" : [
+		ObjectId("63785cb4da5ca54f7bafeabb")
+	]
+}
+> db.employee.find({}).pretty()
+{
+	"_id" : ObjectId("63785aeada5ca54f7bafeab7"),
+	"EmpId" : 1,
+	"Name" : [
+		{
+			"Fname" : "dipti",
+			"Lname" : "Kodre"
+		}
+	],
+	"company" : "infosys",
+	"salary" : 100000,
+	"designation" : "programmer",
+	"age" : 20,
+	"expertise" : [
+		"python",
+		"c++",
+		"java",
+		"mongodb"
+	],
+	"DOB" : "06/08/2002",
+	"EmailId" : "diptikodre8971@gmail.com",
+	"contact" : 2345789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785b4dda5ca54f7bafeab8"),
+	"EmpId" : 2,
+	"Name" : [
+		{
+			"Fname" : "mayuri",
+			"Lname" : "Kawade"
+		}
+	],
+	"company" : "TCS",
+	"salary" : 50000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"python",
+		"c++",
+		"java",
+		"oracle"
+	],
+	"DOB" : "04/02/2002",
+	"EmailId" : "mayuri11@gmail.com",
+	"contact" : 8971789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785bceda5ca54f7bafeab9"),
+	"EmpId" : 3,
+	"Name" : [
+		{
+			"Fname" : "anisha",
+			"Lname" : "Bothe"
+		}
+	],
+	"company" : "Infosys",
+	"salary" : 25000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"Mongodb",
+		"mysql",
+		"Csasandra"
+	],
+	"DOB" : "07/09/2002",
+	"EmailId" : "anisha1211@gmail.com",
+	"contact" : 9011789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "nagar",
+				"district" : "nagar",
+				"state" : "Maharashtra",
+				"pincode" : 411221
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785c4cda5ca54f7bafeaba"),
+	"EmpId" : 4,
+	"Name" : [
+		{
+			"Fname" : "sakshi",
+			"Lname" : "Misal"
+		}
+	],
+	"company" : "Infosys",
+	"salary" : 25000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"Mongodb",
+		"mysql",
+		"Csasandra"
+	],
+	"DOB" : "10/12/2002",
+	"EmailId" : "sakshi11@gmail.com",
+	"contact" : 9822789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "nashik",
+				"district" : "nashik",
+				"state" : "Maharashtra",
+				"pincode" : 4234110
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785cb4da5ca54f7bafeabb"),
+	"EmpId" : 5,
+	"Name" : [
+		{
+			"Fname" : "shraddha",
+			"Lname" : "Pashilkar"
+		}
+	],
+	"company" : "Infosys",
+	"salary" : 150000,
+	"designation" : "developer",
+	"age" : 20,
+	"expertise" : [
+		"Mongodb",
+		"mysql",
+		"Csasandra"
+	],
+	"DOB" : "25/08/2002",
+	"EmailId" : "shradha12@gmail.com",
+	"contact" : 8978789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "kokan",
+				"district" : "raygad",
+				"state" : "Maharashtra",
+				"pincode" : 4234112
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411048
+			}
+		}
+	]
+}
+> db.employee.insertMany([{EmpId:06,Name:[{Fname:'sanika',Lname:'Gaikwad'}],company:'TCS',salary:22000,designation:'tester',age:20,expertise:['java','python','oracle'],DOB:'15/12/2002',EmailId:'sanika12@gmail.com',contact:8976549012,address:[{Paddress:{city:'pimpri',district:'pune',state:'Maharashtra',pincode:4234112},Laddress:{city:'pune',district:'pune',state:'Maharashtra',pincode:411056}}]}])
+{
+	"acknowledged" : true,
+	"insertedIds" : [
+		ObjectId("63785cddda5ca54f7bafeabc")
+	]
+}
+> db.employee.find({}).pretty()
+{
+	"_id" : ObjectId("63785aeada5ca54f7bafeab7"),
+	"EmpId" : 1,
+	"Name" : [
+		{
+			"Fname" : "dipti",
+			"Lname" : "Kodre"
+		}
+	],
+	"company" : "infosys",
+	"salary" : 100000,
+	"designation" : "programmer",
+	"age" : 20,
+	"expertise" : [
+		"python",
+		"c++",
+		"java",
+		"mongodb"
+	],
+	"DOB" : "06/08/2002",
+	"EmailId" : "diptikodre8971@gmail.com",
+	"contact" : 2345789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785b4dda5ca54f7bafeab8"),
+	"EmpId" : 2,
+	"Name" : [
+		{
+			"Fname" : "mayuri",
+			"Lname" : "Kawade"
+		}
+	],
+	"company" : "TCS",
+	"salary" : 50000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"python",
+		"c++",
+		"java",
+		"oracle"
+	],
+	"DOB" : "04/02/2002",
+	"EmailId" : "mayuri11@gmail.com",
+	"contact" : 8971789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785bceda5ca54f7bafeab9"),
+	"EmpId" : 3,
+	"Name" : [
+		{
+			"Fname" : "anisha",
+			"Lname" : "Bothe"
+		}
+	],
+	"company" : "Infosys",
+	"salary" : 25000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"Mongodb",
+		"mysql",
+		"Csasandra"
+	],
+	"DOB" : "07/09/2002",
+	"EmailId" : "anisha1211@gmail.com",
+	"contact" : 9011789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "nagar",
+				"district" : "nagar",
+				"state" : "Maharashtra",
+				"pincode" : 411221
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785c4cda5ca54f7bafeaba"),
+	"EmpId" : 4,
+	"Name" : [
+		{
+			"Fname" : "sakshi",
+			"Lname" : "Misal"
+		}
+	],
+	"company" : "Infosys",
+	"salary" : 25000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"Mongodb",
+		"mysql",
+		"Csasandra"
+	],
+	"DOB" : "10/12/2002",
+	"EmailId" : "sakshi11@gmail.com",
+	"contact" : 9822789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "nashik",
+				"district" : "nashik",
+				"state" : "Maharashtra",
+				"pincode" : 4234110
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785cb4da5ca54f7bafeabb"),
+	"EmpId" : 5,
+	"Name" : [
+		{
+			"Fname" : "shraddha",
+			"Lname" : "Pashilkar"
+		}
+	],
+	"company" : "Infosys",
+	"salary" : 150000,
+	"designation" : "developer",
+	"age" : 20,
+	"expertise" : [
+		"Mongodb",
+		"mysql",
+		"Csasandra"
+	],
+	"DOB" : "25/08/2002",
+	"EmailId" : "shradha12@gmail.com",
+	"contact" : 8978789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "kokan",
+				"district" : "raygad",
+				"state" : "Maharashtra",
+				"pincode" : 4234112
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411048
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785cddda5ca54f7bafeabc"),
+	"EmpId" : 6,
+	"Name" : [
+		{
+			"Fname" : "sanika",
+			"Lname" : "Gaikwad"
+		}
+	],
+	"company" : "TCS",
+	"salary" : 22000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"java",
+		"python",
+		"oracle"
+	],
+	"DOB" : "15/12/2002",
+	"EmailId" : "sanika12@gmail.com",
+	"contact" : 8976549012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "pimpri",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 4234112
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411056
+			}
+		}
+	]
+}
+> 
+> db.employee.find({Designation:'programmer',salary:{$gt:30000}}.pretty()
+... 
+... 
+> ^C
+bye
+root@502-20:~# show dbs
+
+Command 'show' not found, but can be installed with:
+
+apt install mailutils-mh
+apt install mmh         
+apt install nmh         
+
+root@502-20:~# su
+root@502-20:~# mongo
+MongoDB shell version v3.6.3
+connecting to: mongodb://127.0.0.1:27017
+MongoDB server version: 3.6.3
+Server has startup warnings: 
+2022-11-19T08:54:07.655+0530 I STORAGE  [initandlisten] 
+2022-11-19T08:54:07.655+0530 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2022-11-19T08:54:07.655+0530 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2022-11-19T08:54:12.659+0530 I CONTROL  [initandlisten] 
+2022-11-19T08:54:12.660+0530 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2022-11-19T08:54:12.660+0530 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2022-11-19T08:54:12.660+0530 I CONTROL  [initandlisten] 
+> show dbs
+Dipti    0.000GB
+Empdb    0.000GB
+TE_77    0.000GB
+TE_A_71  0.000GB
+admin    0.000GB
+aniket   0.000GB
+config   0.000GB
+local    0.000GB
+> use Empdb
+switched to db Empdb
+> show collections
+Employee
+employee
+> db.employee.find({}).pretty()
+{
+	"_id" : ObjectId("63785aeada5ca54f7bafeab7"),
+	"EmpId" : 1,
+	"Name" : [
+		{
+			"Fname" : "dipti",
+			"Lname" : "Kodre"
+		}
+	],
+	"company" : "infosys",
+	"salary" : 100000,
+	"designation" : "programmer",
+	"age" : 20,
+	"expertise" : [
+		"python",
+		"c++",
+		"java",
+		"mongodb"
+	],
+	"DOB" : "06/08/2002",
+	"EmailId" : "diptikodre8971@gmail.com",
+	"contact" : 2345789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785b4dda5ca54f7bafeab8"),
+	"EmpId" : 2,
+	"Name" : [
+		{
+			"Fname" : "mayuri",
+			"Lname" : "Kawade"
+		}
+	],
+	"company" : "TCS",
+	"salary" : 50000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"python",
+		"c++",
+		"java",
+		"oracle"
+	],
+	"DOB" : "04/02/2002",
+	"EmailId" : "mayuri11@gmail.com",
+	"contact" : 8971789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785bceda5ca54f7bafeab9"),
+	"EmpId" : 3,
+	"Name" : [
+		{
+			"Fname" : "anisha",
+			"Lname" : "Bothe"
+		}
+	],
+	"company" : "Infosys",
+	"salary" : 25000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"Mongodb",
+		"mysql",
+		"Csasandra"
+	],
+	"DOB" : "07/09/2002",
+	"EmailId" : "anisha1211@gmail.com",
+	"contact" : 9011789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "nagar",
+				"district" : "nagar",
+				"state" : "Maharashtra",
+				"pincode" : 411221
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785c4cda5ca54f7bafeaba"),
+	"EmpId" : 4,
+	"Name" : [
+		{
+			"Fname" : "sakshi",
+			"Lname" : "Misal"
+		}
+	],
+	"company" : "Infosys",
+	"salary" : 25000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"Mongodb",
+		"mysql",
+		"Csasandra"
+	],
+	"DOB" : "10/12/2002",
+	"EmailId" : "sakshi11@gmail.com",
+	"contact" : 9822789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "nashik",
+				"district" : "nashik",
+				"state" : "Maharashtra",
+				"pincode" : 4234110
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785cb4da5ca54f7bafeabb"),
+	"EmpId" : 5,
+	"Name" : [
+		{
+			"Fname" : "shraddha",
+			"Lname" : "Pashilkar"
+		}
+	],
+	"company" : "Infosys",
+	"salary" : 150000,
+	"designation" : "developer",
+	"age" : 20,
+	"expertise" : [
+		"Mongodb",
+		"mysql",
+		"Csasandra"
+	],
+	"DOB" : "25/08/2002",
+	"EmailId" : "shradha12@gmail.com",
+	"contact" : 8978789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "kokan",
+				"district" : "raygad",
+				"state" : "Maharashtra",
+				"pincode" : 4234112
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411048
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785cddda5ca54f7bafeabc"),
+	"EmpId" : 6,
+	"Name" : [
+		{
+			"Fname" : "sanika",
+			"Lname" : "Gaikwad"
+		}
+	],
+	"company" : "TCS",
+	"salary" : 22000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"java",
+		"python",
+		"oracle"
+	],
+	"DOB" : "15/12/2002",
+	"EmailId" : "sanika12@gmail.com",
+	"contact" : 8976549012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "pimpri",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 4234112
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411056
+			}
+		}
+	]
+}
+> db.employee.find({'designation':'programmer',salary:{$gt:30000}}).pretty
+function () {
+    this._prettyShell = true;
+    return this;
+}
+> db.employee.find({'designation':'programmer',salary:{$gt:30000}}).pretty
+function () {
+    this._prettyShell = true;
+    return this;
+}
+> db.employee.find({designation:'programmer',salary:{$gt:30000}}).pretty
+function () {
+    this._prettyShell = true;
+    return this;
+}
+> db.employee.update({desgnation:'tester',company:'TCS'},{$set:age:25}},{upsert:true})
+2022-11-19T10:20:16.314+0530 E QUERY    [thread1] SyntaxError: missing } after property list @(shell):1:64
+> db.employee.update({desgnation:'tester',company:'TCS'},{$set:age:25}},{upsert:true})
+2022-11-19T10:20:48.890+0530 E QUERY    [thread1] SyntaxError: missing } after property list @(shell):1:64
+> db.employee.update({desgnation:'tester',company:'TCS'},{$set:{age:25}},{upsert:true})
+WriteResult({
+	"nMatched" : 0,
+	"nUpserted" : 1,
+	"nModified" : 0,
+	"_id" : ObjectId("637860d30e35268ffae654b9")
+})
+> db.employee.find({}).pretty()
+{
+	"_id" : ObjectId("63785aeada5ca54f7bafeab7"),
+	"EmpId" : 1,
+	"Name" : [
+		{
+			"Fname" : "dipti",
+			"Lname" : "Kodre"
+		}
+	],
+	"company" : "infosys",
+	"salary" : 100000,
+	"designation" : "programmer",
+	"age" : 20,
+	"expertise" : [
+		"python",
+		"c++",
+		"java",
+		"mongodb"
+	],
+	"DOB" : "06/08/2002",
+	"EmailId" : "diptikodre8971@gmail.com",
+	"contact" : 2345789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785b4dda5ca54f7bafeab8"),
+	"EmpId" : 2,
+	"Name" : [
+		{
+			"Fname" : "mayuri",
+			"Lname" : "Kawade"
+		}
+	],
+	"company" : "TCS",
+	"salary" : 50000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"python",
+		"c++",
+		"java",
+		"oracle"
+	],
+	"DOB" : "04/02/2002",
+	"EmailId" : "mayuri11@gmail.com",
+	"contact" : 8971789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785bceda5ca54f7bafeab9"),
+	"EmpId" : 3,
+	"Name" : [
+		{
+			"Fname" : "anisha",
+			"Lname" : "Bothe"
+		}
+	],
+	"company" : "Infosys",
+	"salary" : 25000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"Mongodb",
+		"mysql",
+		"Csasandra"
+	],
+	"DOB" : "07/09/2002",
+	"EmailId" : "anisha1211@gmail.com",
+	"contact" : 9011789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "nagar",
+				"district" : "nagar",
+				"state" : "Maharashtra",
+				"pincode" : 411221
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785c4cda5ca54f7bafeaba"),
+	"EmpId" : 4,
+	"Name" : [
+		{
+			"Fname" : "sakshi",
+			"Lname" : "Misal"
+		}
+	],
+	"company" : "Infosys",
+	"salary" : 25000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"Mongodb",
+		"mysql",
+		"Csasandra"
+	],
+	"DOB" : "10/12/2002",
+	"EmailId" : "sakshi11@gmail.com",
+	"contact" : 9822789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "nashik",
+				"district" : "nashik",
+				"state" : "Maharashtra",
+				"pincode" : 4234110
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785cb4da5ca54f7bafeabb"),
+	"EmpId" : 5,
+	"Name" : [
+		{
+			"Fname" : "shraddha",
+			"Lname" : "Pashilkar"
+		}
+	],
+	"company" : "Infosys",
+	"salary" : 150000,
+	"designation" : "developer",
+	"age" : 20,
+	"expertise" : [
+		"Mongodb",
+		"mysql",
+		"Csasandra"
+	],
+	"DOB" : "25/08/2002",
+	"EmailId" : "shradha12@gmail.com",
+	"contact" : 8978789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "kokan",
+				"district" : "raygad",
+				"state" : "Maharashtra",
+				"pincode" : 4234112
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411048
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785cddda5ca54f7bafeabc"),
+	"EmpId" : 6,
+	"Name" : [
+		{
+			"Fname" : "sanika",
+			"Lname" : "Gaikwad"
+		}
+	],
+	"company" : "TCS",
+	"salary" : 22000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"java",
+		"python",
+		"oracle"
+	],
+	"DOB" : "15/12/2002",
+	"EmailId" : "sanika12@gmail.com",
+	"contact" : 8976549012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "pimpri",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 4234112
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411056
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("637860d30e35268ffae654b9"),
+	"company" : "TCS",
+	"desgnation" : "tester",
+	"age" : 25
+}
+> db.empoyee.find{"address.Paddress:'pune',address.pincode:411001}).pretty()
+2022-11-19T10:29:30.623+0530 E QUERY    [thread1] SyntaxError: missing ; before statement @(shell):1:15
+> db.empoyee.find{address.Paddress:'pune',address.pincode:411001}).pretty()
+2022-11-19T10:29:54.887+0530 E QUERY    [thread1] SyntaxError: missing ; before statement @(shell):1:15
+> db.empoyee.find{address.Paddress:'pune',address.pincode:411001}).pretty()
+2022-11-19T10:30:44.183+0530 E QUERY    [thread1] SyntaxError: missing ; before statement @(shell):1:15
+> db.empoyee.find{address.Paddress:'pune',address.pincode:411001}).pretty()
+2022-11-19T10:31:46.783+0530 E QUERY    [thread1] SyntaxError: missing ; before statement @(shell):1:15
+> db.empoyee.find{address.Paddress.city:'pune',address.pincode:411001}).pretty()
+2022-11-19T10:32:34.542+0530 E QUERY    [thread1] SyntaxError: missing ; before statement @(shell):1:15
+> db.empoyee.update{company:'TCS'},{$inc:{salary:20000}},{multi:true})
+2022-11-19T10:38:56.083+0530 E QUERY    [thread1] SyntaxError: missing ; before statement @(shell):1:17
+> db.empoyee.update({company:'TCS'},{$inc:{salary:20000}},{multi:true})
+WriteResult({ "nMatched" : 0, "nUpserted" : 0, "nModified" : 0 })
+> db.empoyee.update({company:'TCS'},{$inc:{salary:2000}},{multi:true})
+WriteResult({ "nMatched" : 0, "nUpserted" : 0, "nModified" : 0 })
+> db.empoyee.find{()}.pretty()
+2022-11-19T10:42:18.047+0530 E QUERY    [thread1] SyntaxError: missing ; before statement @(shell):1:15
+> db.empoyee.find({}).pretty()
+> 
+> db.empoyee.find({}).pretty()
+> db.empoyee.find({designation:{$ne:'developer'}}).pretty()
+> db.empoyee.find({designation:{$ne:'developer'}}).pretty()
+> db.empoyee.find({}).pretty()
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> db.empoyee.find({}).pretty()
+> db.employee.find({}).pretty()
+{
+	"_id" : ObjectId("63785aeada5ca54f7bafeab7"),
+	"EmpId" : 1,
+	"Name" : [
+		{
+			"Fname" : "dipti",
+			"Lname" : "Kodre"
+		}
+	],
+	"company" : "infosys",
+	"salary" : 100000,
+	"designation" : "programmer",
+	"age" : 20,
+	"expertise" : [
+		"python",
+		"c++",
+		"java",
+		"mongodb"
+	],
+	"DOB" : "06/08/2002",
+	"EmailId" : "diptikodre8971@gmail.com",
+	"contact" : 2345789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785b4dda5ca54f7bafeab8"),
+	"EmpId" : 2,
+	"Name" : [
+		{
+			"Fname" : "mayuri",
+			"Lname" : "Kawade"
+		}
+	],
+	"company" : "TCS",
+	"salary" : 50000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"python",
+		"c++",
+		"java",
+		"oracle"
+	],
+	"DOB" : "04/02/2002",
+	"EmailId" : "mayuri11@gmail.com",
+	"contact" : 8971789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785bceda5ca54f7bafeab9"),
+	"EmpId" : 3,
+	"Name" : [
+		{
+			"Fname" : "anisha",
+			"Lname" : "Bothe"
+		}
+	],
+	"company" : "Infosys",
+	"salary" : 25000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"Mongodb",
+		"mysql",
+		"Csasandra"
+	],
+	"DOB" : "07/09/2002",
+	"EmailId" : "anisha1211@gmail.com",
+	"contact" : 9011789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "nagar",
+				"district" : "nagar",
+				"state" : "Maharashtra",
+				"pincode" : 411221
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785c4cda5ca54f7bafeaba"),
+	"EmpId" : 4,
+	"Name" : [
+		{
+			"Fname" : "sakshi",
+			"Lname" : "Misal"
+		}
+	],
+	"company" : "Infosys",
+	"salary" : 25000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"Mongodb",
+		"mysql",
+		"Csasandra"
+	],
+	"DOB" : "10/12/2002",
+	"EmailId" : "sakshi11@gmail.com",
+	"contact" : 9822789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "nashik",
+				"district" : "nashik",
+				"state" : "Maharashtra",
+				"pincode" : 4234110
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785cb4da5ca54f7bafeabb"),
+	"EmpId" : 5,
+	"Name" : [
+		{
+			"Fname" : "shraddha",
+			"Lname" : "Pashilkar"
+		}
+	],
+	"company" : "Infosys",
+	"salary" : 150000,
+	"designation" : "developer",
+	"age" : 20,
+	"expertise" : [
+		"Mongodb",
+		"mysql",
+		"Csasandra"
+	],
+	"DOB" : "25/08/2002",
+	"EmailId" : "shradha12@gmail.com",
+	"contact" : 8978789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "kokan",
+				"district" : "raygad",
+				"state" : "Maharashtra",
+				"pincode" : 4234112
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411048
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785cddda5ca54f7bafeabc"),
+	"EmpId" : 6,
+	"Name" : [
+		{
+			"Fname" : "sanika",
+			"Lname" : "Gaikwad"
+		}
+	],
+	"company" : "TCS",
+	"salary" : 22000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"java",
+		"python",
+		"oracle"
+	],
+	"DOB" : "15/12/2002",
+	"EmailId" : "sanika12@gmail.com",
+	"contact" : 8976549012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "pimpri",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 4234112
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411056
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("637860d30e35268ffae654b9"),
+	"company" : "TCS",
+	"desgnation" : "tester",
+	"age" : 25
+}
+> db.empolyee.find({designation:{$ne:'developer'}}).pretty()
+> db.empolyee.find({designation:{$ne:'developer'}}).pretty()
+> 
+> 
+> db.empolyee.find({}).pretty()
+> db.employee.find({}).pretty()
+{
+	"_id" : ObjectId("63785aeada5ca54f7bafeab7"),
+	"EmpId" : 1,
+	"Name" : [
+		{
+			"Fname" : "dipti",
+			"Lname" : "Kodre"
+		}
+	],
+	"company" : "infosys",
+	"salary" : 100000,
+	"designation" : "programmer",
+	"age" : 20,
+	"expertise" : [
+		"python",
+		"c++",
+		"java",
+		"mongodb"
+	],
+	"DOB" : "06/08/2002",
+	"EmailId" : "diptikodre8971@gmail.com",
+	"contact" : 2345789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785b4dda5ca54f7bafeab8"),
+	"EmpId" : 2,
+	"Name" : [
+		{
+			"Fname" : "mayuri",
+			"Lname" : "Kawade"
+		}
+	],
+	"company" : "TCS",
+	"salary" : 50000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"python",
+		"c++",
+		"java",
+		"oracle"
+	],
+	"DOB" : "04/02/2002",
+	"EmailId" : "mayuri11@gmail.com",
+	"contact" : 8971789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785bceda5ca54f7bafeab9"),
+	"EmpId" : 3,
+	"Name" : [
+		{
+			"Fname" : "anisha",
+			"Lname" : "Bothe"
+		}
+	],
+	"company" : "Infosys",
+	"salary" : 25000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"Mongodb",
+		"mysql",
+		"Csasandra"
+	],
+	"DOB" : "07/09/2002",
+	"EmailId" : "anisha1211@gmail.com",
+	"contact" : 9011789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "nagar",
+				"district" : "nagar",
+				"state" : "Maharashtra",
+				"pincode" : 411221
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785c4cda5ca54f7bafeaba"),
+	"EmpId" : 4,
+	"Name" : [
+		{
+			"Fname" : "sakshi",
+			"Lname" : "Misal"
+		}
+	],
+	"company" : "Infosys",
+	"salary" : 25000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"Mongodb",
+		"mysql",
+		"Csasandra"
+	],
+	"DOB" : "10/12/2002",
+	"EmailId" : "sakshi11@gmail.com",
+	"contact" : 9822789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "nashik",
+				"district" : "nashik",
+				"state" : "Maharashtra",
+				"pincode" : 4234110
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785cb4da5ca54f7bafeabb"),
+	"EmpId" : 5,
+	"Name" : [
+		{
+			"Fname" : "shraddha",
+			"Lname" : "Pashilkar"
+		}
+	],
+	"company" : "Infosys",
+	"salary" : 150000,
+	"designation" : "developer",
+	"age" : 20,
+	"expertise" : [
+		"Mongodb",
+		"mysql",
+		"Csasandra"
+	],
+	"DOB" : "25/08/2002",
+	"EmailId" : "shradha12@gmail.com",
+	"contact" : 8978789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "kokan",
+				"district" : "raygad",
+				"state" : "Maharashtra",
+				"pincode" : 4234112
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411048
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785cddda5ca54f7bafeabc"),
+	"EmpId" : 6,
+	"Name" : [
+		{
+			"Fname" : "sanika",
+			"Lname" : "Gaikwad"
+		}
+	],
+	"company" : "TCS",
+	"salary" : 22000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"java",
+		"python",
+		"oracle"
+	],
+	"DOB" : "15/12/2002",
+	"EmailId" : "sanika12@gmail.com",
+	"contact" : 8976549012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "pimpri",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 4234112
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411056
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("637860d30e35268ffae654b9"),
+	"company" : "TCS",
+	"desgnation" : "tester",
+	"age" : 25
+}
+> db.employee.find({designation:{$ne:'developer'}}).pretty()
+{
+	"_id" : ObjectId("63785aeada5ca54f7bafeab7"),
+	"EmpId" : 1,
+	"Name" : [
+		{
+			"Fname" : "dipti",
+			"Lname" : "Kodre"
+		}
+	],
+	"company" : "infosys",
+	"salary" : 100000,
+	"designation" : "programmer",
+	"age" : 20,
+	"expertise" : [
+		"python",
+		"c++",
+		"java",
+		"mongodb"
+	],
+	"DOB" : "06/08/2002",
+	"EmailId" : "diptikodre8971@gmail.com",
+	"contact" : 2345789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785b4dda5ca54f7bafeab8"),
+	"EmpId" : 2,
+	"Name" : [
+		{
+			"Fname" : "mayuri",
+			"Lname" : "Kawade"
+		}
+	],
+	"company" : "TCS",
+	"salary" : 50000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"python",
+		"c++",
+		"java",
+		"oracle"
+	],
+	"DOB" : "04/02/2002",
+	"EmailId" : "mayuri11@gmail.com",
+	"contact" : 8971789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785bceda5ca54f7bafeab9"),
+	"EmpId" : 3,
+	"Name" : [
+		{
+			"Fname" : "anisha",
+			"Lname" : "Bothe"
+		}
+	],
+	"company" : "Infosys",
+	"salary" : 25000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"Mongodb",
+		"mysql",
+		"Csasandra"
+	],
+	"DOB" : "07/09/2002",
+	"EmailId" : "anisha1211@gmail.com",
+	"contact" : 9011789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "nagar",
+				"district" : "nagar",
+				"state" : "Maharashtra",
+				"pincode" : 411221
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785c4cda5ca54f7bafeaba"),
+	"EmpId" : 4,
+	"Name" : [
+		{
+			"Fname" : "sakshi",
+			"Lname" : "Misal"
+		}
+	],
+	"company" : "Infosys",
+	"salary" : 25000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"Mongodb",
+		"mysql",
+		"Csasandra"
+	],
+	"DOB" : "10/12/2002",
+	"EmailId" : "sakshi11@gmail.com",
+	"contact" : 9822789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "nashik",
+				"district" : "nashik",
+				"state" : "Maharashtra",
+				"pincode" : 4234110
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785cddda5ca54f7bafeabc"),
+	"EmpId" : 6,
+	"Name" : [
+		{
+			"Fname" : "sanika",
+			"Lname" : "Gaikwad"
+		}
+	],
+	"company" : "TCS",
+	"salary" : 22000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"java",
+		"python",
+		"oracle"
+	],
+	"DOB" : "15/12/2002",
+	"EmailId" : "sanika12@gmail.com",
+	"contact" : 8976549012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "pimpri",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 4234112
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411056
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("637860d30e35268ffae654b9"),
+	"company" : "TCS",
+	"desgnation" : "tester",
+	"age" : 25
+}
+> db.employee.find({designation:{$ne:'developer'}}).pretty()
+{
+	"_id" : ObjectId("63785aeada5ca54f7bafeab7"),
+	"EmpId" : 1,
+	"Name" : [
+		{
+			"Fname" : "dipti",
+			"Lname" : "Kodre"
+		}
+	],
+	"company" : "infosys",
+	"salary" : 100000,
+	"designation" : "programmer",
+	"age" : 20,
+	"expertise" : [
+		"python",
+		"c++",
+		"java",
+		"mongodb"
+	],
+	"DOB" : "06/08/2002",
+	"EmailId" : "diptikodre8971@gmail.com",
+	"contact" : 2345789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785b4dda5ca54f7bafeab8"),
+	"EmpId" : 2,
+	"Name" : [
+		{
+			"Fname" : "mayuri",
+			"Lname" : "Kawade"
+		}
+	],
+	"company" : "TCS",
+	"salary" : 50000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"python",
+		"c++",
+		"java",
+		"oracle"
+	],
+	"DOB" : "04/02/2002",
+	"EmailId" : "mayuri11@gmail.com",
+	"contact" : 8971789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785bceda5ca54f7bafeab9"),
+	"EmpId" : 3,
+	"Name" : [
+		{
+			"Fname" : "anisha",
+			"Lname" : "Bothe"
+		}
+	],
+	"company" : "Infosys",
+	"salary" : 25000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"Mongodb",
+		"mysql",
+		"Csasandra"
+	],
+	"DOB" : "07/09/2002",
+	"EmailId" : "anisha1211@gmail.com",
+	"contact" : 9011789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "nagar",
+				"district" : "nagar",
+				"state" : "Maharashtra",
+				"pincode" : 411221
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785c4cda5ca54f7bafeaba"),
+	"EmpId" : 4,
+	"Name" : [
+		{
+			"Fname" : "sakshi",
+			"Lname" : "Misal"
+		}
+	],
+	"company" : "Infosys",
+	"salary" : 25000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"Mongodb",
+		"mysql",
+		"Csasandra"
+	],
+	"DOB" : "10/12/2002",
+	"EmailId" : "sakshi11@gmail.com",
+	"contact" : 9822789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "nashik",
+				"district" : "nashik",
+				"state" : "Maharashtra",
+				"pincode" : 4234110
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785cddda5ca54f7bafeabc"),
+	"EmpId" : 6,
+	"Name" : [
+		{
+			"Fname" : "sanika",
+			"Lname" : "Gaikwad"
+		}
+	],
+	"company" : "TCS",
+	"salary" : 22000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"java",
+		"python",
+		"oracle"
+	],
+	"DOB" : "15/12/2002",
+	"EmailId" : "sanika12@gmail.com",
+	"contact" : 8976549012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "pimpri",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 4234112
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411056
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("637860d30e35268ffae654b9"),
+	"company" : "TCS",
+	"desgnation" : "tester",
+	"age" : 25
+}
+> db.empoyee.update({company:'TCS'},{$inc:{salary:2000}},{multi:true})
+WriteResult({ "nMatched" : 0, "nUpserted" : 0, "nModified" : 0 })
+> db.employee.update({company:'TCS'},{$inc:{salary:2000}},{multi:true})
+WriteResult({ "nMatched" : 3, "nUpserted" : 0, "nModified" : 3 })
+> db.employee.update({company:'TCS'},{$inc:{salary:2000}},{multi:true})
+WriteResult({ "nMatched" : 3, "nUpserted" : 0, "nModified" : 3 })
+> db.employee.find({}).pretty()
+{
+	"_id" : ObjectId("63785aeada5ca54f7bafeab7"),
+	"EmpId" : 1,
+	"Name" : [
+		{
+			"Fname" : "dipti",
+			"Lname" : "Kodre"
+		}
+	],
+	"company" : "infosys",
+	"salary" : 100000,
+	"designation" : "programmer",
+	"age" : 20,
+	"expertise" : [
+		"python",
+		"c++",
+		"java",
+		"mongodb"
+	],
+	"DOB" : "06/08/2002",
+	"EmailId" : "diptikodre8971@gmail.com",
+	"contact" : 2345789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785b4dda5ca54f7bafeab8"),
+	"EmpId" : 2,
+	"Name" : [
+		{
+			"Fname" : "mayuri",
+			"Lname" : "Kawade"
+		}
+	],
+	"company" : "TCS",
+	"salary" : 54000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"python",
+		"c++",
+		"java",
+		"oracle"
+	],
+	"DOB" : "04/02/2002",
+	"EmailId" : "mayuri11@gmail.com",
+	"contact" : 8971789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785bceda5ca54f7bafeab9"),
+	"EmpId" : 3,
+	"Name" : [
+		{
+			"Fname" : "anisha",
+			"Lname" : "Bothe"
+		}
+	],
+	"company" : "Infosys",
+	"salary" : 25000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"Mongodb",
+		"mysql",
+		"Csasandra"
+	],
+	"DOB" : "07/09/2002",
+	"EmailId" : "anisha1211@gmail.com",
+	"contact" : 9011789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "nagar",
+				"district" : "nagar",
+				"state" : "Maharashtra",
+				"pincode" : 411221
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785c4cda5ca54f7bafeaba"),
+	"EmpId" : 4,
+	"Name" : [
+		{
+			"Fname" : "sakshi",
+			"Lname" : "Misal"
+		}
+	],
+	"company" : "Infosys",
+	"salary" : 25000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"Mongodb",
+		"mysql",
+		"Csasandra"
+	],
+	"DOB" : "10/12/2002",
+	"EmailId" : "sakshi11@gmail.com",
+	"contact" : 9822789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "nashik",
+				"district" : "nashik",
+				"state" : "Maharashtra",
+				"pincode" : 4234110
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785cb4da5ca54f7bafeabb"),
+	"EmpId" : 5,
+	"Name" : [
+		{
+			"Fname" : "shraddha",
+			"Lname" : "Pashilkar"
+		}
+	],
+	"company" : "Infosys",
+	"salary" : 150000,
+	"designation" : "developer",
+	"age" : 20,
+	"expertise" : [
+		"Mongodb",
+		"mysql",
+		"Csasandra"
+	],
+	"DOB" : "25/08/2002",
+	"EmailId" : "shradha12@gmail.com",
+	"contact" : 8978789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "kokan",
+				"district" : "raygad",
+				"state" : "Maharashtra",
+				"pincode" : 4234112
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411048
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785cddda5ca54f7bafeabc"),
+	"EmpId" : 6,
+	"Name" : [
+		{
+			"Fname" : "sanika",
+			"Lname" : "Gaikwad"
+		}
+	],
+	"company" : "TCS",
+	"salary" : 26000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"java",
+		"python",
+		"oracle"
+	],
+	"DOB" : "15/12/2002",
+	"EmailId" : "sanika12@gmail.com",
+	"contact" : 8976549012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "pimpri",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 4234112
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411056
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("637860d30e35268ffae654b9"),
+	"company" : "TCS",
+	"desgnation" : "tester",
+	"age" : 25,
+	"salary" : 4000
+}
+> db.employee.find({expertise:['mongodb','mysql','casandra']}).pretty()
+> db.employee.find({expertise:['Mongodb','mysql','Csasandra']}).pretty()
+{
+	"_id" : ObjectId("63785bceda5ca54f7bafeab9"),
+	"EmpId" : 3,
+	"Name" : [
+		{
+			"Fname" : "anisha",
+			"Lname" : "Bothe"
+		}
+	],
+	"company" : "Infosys",
+	"salary" : 25000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"Mongodb",
+		"mysql",
+		"Csasandra"
+	],
+	"DOB" : "07/09/2002",
+	"EmailId" : "anisha1211@gmail.com",
+	"contact" : 9011789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "nagar",
+				"district" : "nagar",
+				"state" : "Maharashtra",
+				"pincode" : 411221
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785c4cda5ca54f7bafeaba"),
+	"EmpId" : 4,
+	"Name" : [
+		{
+			"Fname" : "sakshi",
+			"Lname" : "Misal"
+		}
+	],
+	"company" : "Infosys",
+	"salary" : 25000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"Mongodb",
+		"mysql",
+		"Csasandra"
+	],
+	"DOB" : "10/12/2002",
+	"EmailId" : "sakshi11@gmail.com",
+	"contact" : 9822789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "nashik",
+				"district" : "nashik",
+				"state" : "Maharashtra",
+				"pincode" : 4234110
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785cb4da5ca54f7bafeabb"),
+	"EmpId" : 5,
+	"Name" : [
+		{
+			"Fname" : "shraddha",
+			"Lname" : "Pashilkar"
+		}
+	],
+	"company" : "Infosys",
+	"salary" : 150000,
+	"designation" : "developer",
+	"age" : 20,
+	"expertise" : [
+		"Mongodb",
+		"mysql",
+		"Csasandra"
+	],
+	"DOB" : "25/08/2002",
+	"EmailId" : "shradha12@gmail.com",
+	"contact" : 8978789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "kokan",
+				"district" : "raygad",
+				"state" : "Maharashtra",
+				"pincode" : 4234112
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411048
+			}
+		}
+	]
+}
+> db.employee.find({$or:[designation:'developer'},{designation:'tester'}]}).pretty()
+2022-11-19T11:09:07.313+0530 E QUERY    [thread1] SyntaxError: missing ] after element list @(shell):1:34
+> 
+> db.employee.find({$or:[designation:'developer'},{designation:'tester'}]}).pretty()
+2022-11-19T11:10:33.513+0530 E QUERY    [thread1] SyntaxError: missing ] after element list @(shell):1:34
+> db.employee.find({designation:{$in:['developer','tester']}})
+{ "_id" : ObjectId("63785b4dda5ca54f7bafeab8"), "EmpId" : 2, "Name" : [ { "Fname" : "mayuri", "Lname" : "Kawade" } ], "company" : "TCS", "salary" : 54000, "designation" : "tester", "age" : 20, "expertise" : [ "python", "c++", "java", "oracle" ], "DOB" : "04/02/2002", "EmailId" : "mayuri11@gmail.com", "contact" : 8971789012, "address" : [ { "Paddress" : { "city" : "pune", "district" : "pune", "state" : "Maharashtra", "pincode" : 411001 }, "Laddress" : { "city" : "pune", "district" : "pune", "state" : "Maharashtra", "pincode" : 411001 } } ] }
+{ "_id" : ObjectId("63785bceda5ca54f7bafeab9"), "EmpId" : 3, "Name" : [ { "Fname" : "anisha", "Lname" : "Bothe" } ], "company" : "Infosys", "salary" : 25000, "designation" : "tester", "age" : 20, "expertise" : [ "Mongodb", "mysql", "Csasandra" ], "DOB" : "07/09/2002", "EmailId" : "anisha1211@gmail.com", "contact" : 9011789012, "address" : [ { "Paddress" : { "city" : "nagar", "district" : "nagar", "state" : "Maharashtra", "pincode" : 411221 }, "Laddress" : { "city" : "pune", "district" : "pune", "state" : "Maharashtra", "pincode" : 411001 } } ] }
+{ "_id" : ObjectId("63785c4cda5ca54f7bafeaba"), "EmpId" : 4, "Name" : [ { "Fname" : "sakshi", "Lname" : "Misal" } ], "company" : "Infosys", "salary" : 25000, "designation" : "tester", "age" : 20, "expertise" : [ "Mongodb", "mysql", "Csasandra" ], "DOB" : "10/12/2002", "EmailId" : "sakshi11@gmail.com", "contact" : 9822789012, "address" : [ { "Paddress" : { "city" : "nashik", "district" : "nashik", "state" : "Maharashtra", "pincode" : 4234110 }, "Laddress" : { "city" : "pune", "district" : "pune", "state" : "Maharashtra", "pincode" : 411001 } } ] }
+{ "_id" : ObjectId("63785cb4da5ca54f7bafeabb"), "EmpId" : 5, "Name" : [ { "Fname" : "shraddha", "Lname" : "Pashilkar" } ], "company" : "Infosys", "salary" : 150000, "designation" : "developer", "age" : 20, "expertise" : [ "Mongodb", "mysql", "Csasandra" ], "DOB" : "25/08/2002", "EmailId" : "shradha12@gmail.com", "contact" : 8978789012, "address" : [ { "Paddress" : { "city" : "kokan", "district" : "raygad", "state" : "Maharashtra", "pincode" : 4234112 }, "Laddress" : { "city" : "pune", "district" : "pune", "state" : "Maharashtra", "pincode" : 411048 } } ] }
+{ "_id" : ObjectId("63785cddda5ca54f7bafeabc"), "EmpId" : 6, "Name" : [ { "Fname" : "sanika", "Lname" : "Gaikwad" } ], "company" : "TCS", "salary" : 26000, "designation" : "tester", "age" : 20, "expertise" : [ "java", "python", "oracle" ], "DOB" : "15/12/2002", "EmailId" : "sanika12@gmail.com", "contact" : 8976549012, "address" : [ { "Paddress" : { "city" : "pimpri", "district" : "pune", "state" : "Maharashtra", "pincode" : 4234112 }, "Laddress" : { "city" : "pune", "district" : "pune", "state" : "Maharashtra", "pincode" : 411056 } } ] }
+> db.employee.find({}).pretty()
+{
+	"_id" : ObjectId("63785aeada5ca54f7bafeab7"),
+	"EmpId" : 1,
+	"Name" : [
+		{
+			"Fname" : "dipti",
+			"Lname" : "Kodre"
+		}
+	],
+	"company" : "infosys",
+	"salary" : 100000,
+	"designation" : "programmer",
+	"age" : 20,
+	"expertise" : [
+		"python",
+		"c++",
+		"java",
+		"mongodb"
+	],
+	"DOB" : "06/08/2002",
+	"EmailId" : "diptikodre8971@gmail.com",
+	"contact" : 2345789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785b4dda5ca54f7bafeab8"),
+	"EmpId" : 2,
+	"Name" : [
+		{
+			"Fname" : "mayuri",
+			"Lname" : "Kawade"
+		}
+	],
+	"company" : "TCS",
+	"salary" : 54000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"python",
+		"c++",
+		"java",
+		"oracle"
+	],
+	"DOB" : "04/02/2002",
+	"EmailId" : "mayuri11@gmail.com",
+	"contact" : 8971789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785bceda5ca54f7bafeab9"),
+	"EmpId" : 3,
+	"Name" : [
+		{
+			"Fname" : "anisha",
+			"Lname" : "Bothe"
+		}
+	],
+	"company" : "Infosys",
+	"salary" : 25000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"Mongodb",
+		"mysql",
+		"Csasandra"
+	],
+	"DOB" : "07/09/2002",
+	"EmailId" : "anisha1211@gmail.com",
+	"contact" : 9011789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "nagar",
+				"district" : "nagar",
+				"state" : "Maharashtra",
+				"pincode" : 411221
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785c4cda5ca54f7bafeaba"),
+	"EmpId" : 4,
+	"Name" : [
+		{
+			"Fname" : "sakshi",
+			"Lname" : "Misal"
+		}
+	],
+	"company" : "Infosys",
+	"salary" : 25000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"Mongodb",
+		"mysql",
+		"Csasandra"
+	],
+	"DOB" : "10/12/2002",
+	"EmailId" : "sakshi11@gmail.com",
+	"contact" : 9822789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "nashik",
+				"district" : "nashik",
+				"state" : "Maharashtra",
+				"pincode" : 4234110
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785cb4da5ca54f7bafeabb"),
+	"EmpId" : 5,
+	"Name" : [
+		{
+			"Fname" : "shraddha",
+			"Lname" : "Pashilkar"
+		}
+	],
+	"company" : "Infosys",
+	"salary" : 150000,
+	"designation" : "developer",
+	"age" : 20,
+	"expertise" : [
+		"Mongodb",
+		"mysql",
+		"Csasandra"
+	],
+	"DOB" : "25/08/2002",
+	"EmailId" : "shradha12@gmail.com",
+	"contact" : 8978789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "kokan",
+				"district" : "raygad",
+				"state" : "Maharashtra",
+				"pincode" : 4234112
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411048
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785cddda5ca54f7bafeabc"),
+	"EmpId" : 6,
+	"Name" : [
+		{
+			"Fname" : "sanika",
+			"Lname" : "Gaikwad"
+		}
+	],
+	"company" : "TCS",
+	"salary" : 26000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"java",
+		"python",
+		"oracle"
+	],
+	"DOB" : "15/12/2002",
+	"EmailId" : "sanika12@gmail.com",
+	"contact" : 8976549012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "pimpri",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 4234112
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411056
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("637860d30e35268ffae654b9"),
+	"company" : "TCS",
+	"desgnation" : "tester",
+	"age" : 25,
+	"salary" : 4000
+}
+> db.employee.remove({designation:'developer'},1)
+WriteResult({ "nRemoved" : 1 })
+> db.employee.find({}).pretty()
+{
+	"_id" : ObjectId("63785aeada5ca54f7bafeab7"),
+	"EmpId" : 1,
+	"Name" : [
+		{
+			"Fname" : "dipti",
+			"Lname" : "Kodre"
+		}
+	],
+	"company" : "infosys",
+	"salary" : 100000,
+	"designation" : "programmer",
+	"age" : 20,
+	"expertise" : [
+		"python",
+		"c++",
+		"java",
+		"mongodb"
+	],
+	"DOB" : "06/08/2002",
+	"EmailId" : "diptikodre8971@gmail.com",
+	"contact" : 2345789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785b4dda5ca54f7bafeab8"),
+	"EmpId" : 2,
+	"Name" : [
+		{
+			"Fname" : "mayuri",
+			"Lname" : "Kawade"
+		}
+	],
+	"company" : "TCS",
+	"salary" : 54000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"python",
+		"c++",
+		"java",
+		"oracle"
+	],
+	"DOB" : "04/02/2002",
+	"EmailId" : "mayuri11@gmail.com",
+	"contact" : 8971789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785bceda5ca54f7bafeab9"),
+	"EmpId" : 3,
+	"Name" : [
+		{
+			"Fname" : "anisha",
+			"Lname" : "Bothe"
+		}
+	],
+	"company" : "Infosys",
+	"salary" : 25000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"Mongodb",
+		"mysql",
+		"Csasandra"
+	],
+	"DOB" : "07/09/2002",
+	"EmailId" : "anisha1211@gmail.com",
+	"contact" : 9011789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "nagar",
+				"district" : "nagar",
+				"state" : "Maharashtra",
+				"pincode" : 411221
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785c4cda5ca54f7bafeaba"),
+	"EmpId" : 4,
+	"Name" : [
+		{
+			"Fname" : "sakshi",
+			"Lname" : "Misal"
+		}
+	],
+	"company" : "Infosys",
+	"salary" : 25000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"Mongodb",
+		"mysql",
+		"Csasandra"
+	],
+	"DOB" : "10/12/2002",
+	"EmailId" : "sakshi11@gmail.com",
+	"contact" : 9822789012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "nashik",
+				"district" : "nashik",
+				"state" : "Maharashtra",
+				"pincode" : 4234110
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411001
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("63785cddda5ca54f7bafeabc"),
+	"EmpId" : 6,
+	"Name" : [
+		{
+			"Fname" : "sanika",
+			"Lname" : "Gaikwad"
+		}
+	],
+	"company" : "TCS",
+	"salary" : 26000,
+	"designation" : "tester",
+	"age" : 20,
+	"expertise" : [
+		"java",
+		"python",
+		"oracle"
+	],
+	"DOB" : "15/12/2002",
+	"EmailId" : "sanika12@gmail.com",
+	"contact" : 8976549012,
+	"address" : [
+		{
+			"Paddress" : {
+				"city" : "pimpri",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 4234112
+			},
+			"Laddress" : {
+				"city" : "pune",
+				"district" : "pune",
+				"state" : "Maharashtra",
+				"pincode" : 411056
+			}
+		}
+	]
+}
+{
+	"_id" : ObjectId("637860d30e35268ffae654b9"),
+	"company" : "TCS",
+	"desgnation" : "tester",
+	"age" : 25,
+	"salary" : 4000
+}
+> 
+

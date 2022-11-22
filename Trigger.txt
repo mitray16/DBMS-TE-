@@ -1,0 +1,36 @@
+create table library(rollno int,name char(10),dateofissue date,nameofbook char(10),status char(10));
+
+
+create table library_audit(rollno int,name char(10),dateofissue date,nameofbook char(10),status char(10),ts timestamp,command varchar2(14));
+
+
+
+create or replace trigger at1  after update or delete or insert  on library for each row
+begin
+if updating then 
+insert into library_audit values(:old.rollno,:old.name,:old.dateofissue,:old.nameofbook,:old.status,current_timestamp,'update');
+elsif  deleting then 
+insert into library_audit values(:old.rollno,:old.name,:old.dateofissue,:old.nameofbook,:old.status,current_timestamp,'delete');
+elsif inserting then 
+insert into library_audit values(:new.rollno,:new.name,:new.dateofissue,:new.nameofbook,:new.status,current_timestamp,'insert');
+end if;
+end;
+/
+
+
+
+
+insert into library values(101,'sai',to_date('2017/11/11','yyyy/mm/dd'),'dbms','i');
+
+
+insert into library values(102,'ram',to_date('2017/12/12','yyyy/mm/dd'),'toc','i');
+
+ 
+update library set nameofbook = 'spos' where rollno = 101;
+
+
+delete from library where rollno = 102;
+
+
+
+select * from library_audit;
