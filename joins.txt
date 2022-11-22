@@ -1,0 +1,60 @@
+--create table Companies(comp_id VARCHAR(10), name VARCHAR(20), cost int , year int);
+--create table Orders(comp_id VARCHAR(10), domain VARCHAR(20), quantity int);
+-- desc Companies;
+-- desc Orders;
+
+
+-- insert into Companies values('C001','ONGC',2000,2010);
+-- insert into Companies values('C002','HPCL',2500,2012);
+-- insert into Companies values('C005','IOCL',1000,2014);
+-- insert into Companies values('C006','BHEL',3000,2015);
+
+-- insert into Orders values('C001','Oil',109);
+-- insert into Orders values('C002','Gas',121);
+-- insert into Orders values('C007','telecom',115);
+-- insert into Orders values('C008','IT',141);
+
+-- select * from Companies;
+-- select * from Orders;
+
+--Q1: Find names, costs, domains and quantities for companies using inner join.
+
+-- select Companies.name, Companies.cost, Orders.domain, Orders.quantity
+-- FROM Companies
+-- INNER JOIN Orders
+-- ON Companies.comp_id=Orders.comp_id;
+
+-- Q2: Find names, costs, domains and quantities for companies using left outer join.
+-- select Companies.name, Companies.cost, Orders.domain, Orders.quantity
+-- FROM Companies
+-- LEFT OUTER JOIN Orders
+-- ON Companies.comp_id=Orders.comp_id; 
+
+-- Q3: Find names, costs, domains and quantities for companies using right outer join
+-- select Companies.name, Companies.cost, Orders.domain, Orders.quantity
+-- FROM Companies
+-- RIGHT OUTER JOIN Orders
+-- ON Companies.comp_id=Orders.comp_id; 
+
+-- Q4: Find names, costs, domains and quantities for companies using Union operator.
+-- select name,cost
+-- from Companies
+-- UNION
+-- select domain,quantity
+-- from Orders;
+
+-- Q5.Create View View1 by selecting both tables to show company name and quantities
+
+-- create VIEW View1 AS
+-- select name,quantity
+-- from Companies,Orders;
+
+-- select * from View1;
+
+-- Q6. Create View2 on branch table by selecting any two columns and perform insert update delete operations
+
+-- create VIEW View2 AS
+-- select comp_id,name from Companies;
+-- select * from View2;
+-- UPDATE View2 SET name='BHEL1' where comp_id='C006';
+--select * from View2;
